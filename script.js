@@ -44,18 +44,19 @@ qrImg.src = "";
 
 qrImg.onload = () =>{
     qrImg.classList.remove('loading');
-    qrStatus.textContent = '✅ Ready to scan';
+    qrStatus.textContent = '✅ Ready to scan!';
 }
 qrImg.onerror = () => {
     qrImg.classList.remove('loading');
-    qrStatus.textContent='❌ Failed to load - check your connection';
+    qrStatus.textContent='❌ Failed to load - check your connection.';
     qrStatus.classList.add('error');
 
 };
 qrImg.src = apiUrl;
 }
 btn.addEventListener('click',generate);
-inp.addEventListener('keydown',e => {if(inp.value.trim())
+inp.addEventListener('keydown',e=>{if(e.key==='Enter') generate();});
+inp.addEventListener('input',() => {if(inp.value.trim())
     errorMsg.classList.remove('show');
 });
 dlBtn.addEventListener('click',()=>{
